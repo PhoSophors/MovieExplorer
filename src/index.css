@@ -1,17 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: var(--body-size);
+  background-color: var(--night-rider);
+  color: var(--white);
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+:root {
+  --main-bg: #E5C5BD;
+  --night-rider: #332e2e;
+  --dark-blue: #5E718B;
+  --tea-green: #96AA9A;
+  --pig-pink: #ffd3f3;
+  --clear-day: #e3fff8;
+  --white: #fff;
+
+  --titles: Inter, sans-serif;
+}
+
+/* Header =========================================================================*/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem ;
+  position: fixed;
+  width: 100%;
+  height:80px;
+  z-index: 10;
+  top: 0;
+  box-shadow: 0 6px 26px rgba(0, 0, 0, 0);;
+}
+.header {
+  padding: 20px;
+  backdrop-filter: blur(20px);
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.header .logo-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-variant-ligatures: no-common-ligatures;
+  -webkit-font-variant-ligatures: no-common-ligatures;
+  padding: 0 10px;
+  background-clip: border-box;
+  color: #fff;
+  background-color: var(--white);
+  -webkit-text-fill-color: transparent; 
+  -webkit-background-clip: text;
+  cursor: pointer;
+}
+.nav-menu{
+  display: flex;
+  list-style-type: none;
+  cursor: pointer;
+}
+.nav-menu li{
+  padding: 0 1rem;
+  cursor: pointer;
+  position: relative;
+}
+.nav-menu li a:hover{
+  font-size: 1.2rem;
+}
+
+.nav-menu li a {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--white);
+  position: relative;
+  text-decoration: none; 
+  display: inline-block; 
+}
+
+.nav-menu li a::after {
+  content: '';
+  position: absolute;
+  bottom: -20px; 
+  left: 0;
+  width: 0;
+  height: 2px; 
+  background-color: var(--night-rider);
+  transition: width 0.3s ease; 
+}
+
+.nav-menu li a:hover::after {
+  width: 100%;
+}
+
+.toggler {
+  display: none;
+}
+
+@media (max-width:1075px){
+  .nav-menu {
+      flex-direction: column;
+      width: 80%;
+      height: 100vh;
+      position: absolute;
+      top: 0px;
+      left: -100%;
+      transition: .3s;
+      background-color: var(--tea-green);
+      padding: 20px;
+      background-size: 3px 3px;
+      backdrop-filter: blur(3px);
+      font-size: 14px;
+      line-height: 14px;
+  }
+  .nav-menu.active{
+      left: 0;
+  }
+  .nav-menu li{
+      padding: 1rem 0;
+      margin-left: 25px;
+      display: block !important;
+      background-color: var(--tea-green);
+  }
+  .nav-menu li a{
+      font-size: 1.2rem;
+      color: white; 
+  }
+  .nav-menu li a:hover{
+    font-size: 1.2rem;
+    color: var(--tea-green);
+  }
+  .toggler {
+    display: block ;
+    color: white;
+  }
+  .dropdown-menu {
+    position: relative;
+    top: 0;
+    left: 0;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+  }
+  .dropdown-menu li {
+    padding: 0 0 0 20px;
+  }
+}
+/* end Header */
+
+/* hero ========================================= */
+.hero {
+  background-color: var(--dark-blue);
+  height: auto;
+}
+
+/* card =========================================*/
+.movie-card {
+  text-align: center;
+  width: auto;
+  width: 210px;
+}
+
+.movie-card img {
+  max-width: 100%;
+  border-radius: 10px;
+  height: 250px;
+  width: 200px;
+}
+.card-scroll {
+  width: 100%;
+
+}
+
+h1 {
+  text-align: center;
+}
+
+
+@media (max-width: 600px) {
+  .movie-card {
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    width: 160px;
+  }
+
+  .movie-card img {
+    width: 100%; 
+    height: 190px; 
+    border-radius: 10px;
+  }
+
+  .card-scroll {
+    border-right: none; /* Optionally remove or adjust the border for smaller screens */
+  }
+}
+
+
+/* Footer ============================================= */
+.footer-socail {
+  background-color: var(--tea-green);
 }

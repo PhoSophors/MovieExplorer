@@ -19,7 +19,7 @@ const MovieCard = ({ movie }) => {
         alt={movie.title}
       />
       <div className="mt-4 mb-4 mr-2">
-        <h3 className="font-bold text-slate-100 truncate mt-2 flex text-start">
+        <h3 className="font-bold movie-title truncate mt-2 flex text-start">
           {movie.title}
         </h3>
         <p className="truncate-2 text-start text-gray-300">

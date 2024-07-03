@@ -53,18 +53,18 @@ const SearchMovies = () => {
           value={query}
           onChange={handleInputChange}
           placeholder="Search for a movie..."
-          className="flex-1 outline-none  bg-transparent text-slate-900 focus:outline-none"
+          className="flex-1 outline-none  bg-transparent text-white focus:outline-none"
         />
         <button
           type="submit"
-          className="p-2 bg-blue-500 w-10 h-10 flex justify-center items-center text-white rounded-md ml-2 hover:bg-blue-600 focus:outline-none"
+          className="p-2 bg-white w-10 h-10 flex justify-center items-center text-slate-900 rounded-md ml-2 hover:bg-blue-600 focus:outline-none"
         >
           <SearchOutlined />
         </button>
       </form>
-      <div className="mt-4 max-w-full w-full">
+      <div className="mt-4 max-w-full w-full flex justify-center">
         {movies.length > 0 ? (
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 ">
             {movies.map((movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))}

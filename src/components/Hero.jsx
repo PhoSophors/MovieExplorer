@@ -25,7 +25,7 @@ const Hero = () => {
         />
         Your browser does not support the video tag.
       </video>
-      <div className="text-center xl:mt-20 md:mt-10 mt-5 z-10">
+      <div className="text-center xl:mt-20 md:mt-10 mt-5 z-10 pt-20">
         <h1 className="xl:text-6xl md:text-4xl text-3xl flex text-start font-bold mt-20">
           Welcome to KH Movies
         </h1>

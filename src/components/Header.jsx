@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Outlet, Link as RouterLink, useNavigate } from "react-router-dom";
-import { Link as ScrollLink } from "react-scroll";
+import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 import { CloseOutlined, AlignRightOutlined } from "@ant-design/icons";
 
 const Header = ({ isOtherPage }) => {
@@ -16,6 +16,7 @@ const Header = ({ isOtherPage }) => {
       setColor(false);
     }
   };
+
   useEffect(() => {
     window.addEventListener("scroll", changeColor);
     return () => {
@@ -25,21 +26,21 @@ const Header = ({ isOtherPage }) => {
 
   const handleNavClick = (sectionId) => {
     if (isOtherPage) {
-      navigate(`/#${sectionId}`);
-      setClick(false); // Close the menu after navigation
+      navigate(`/#${sectionId}`, { state: { sectionId } });
+      setClick(false); 
     }
   };
 
-  function refreshPage() {
+  const refreshPage = () => {
     navigate("/");
     window.location.reload(true);
-  }
+  };
 
   const closeMenu = () => {
     setClick(false);
   };
 
-  const scrollOffset = -80; // Adjust this offset based on your design (account for header height, etc.)
+  const scrollOffset = -100; 
 
   return (
     <>
@@ -56,7 +57,6 @@ const Header = ({ isOtherPage }) => {
                 to="/#popular"
                 onClick={() => {
                   handleNavClick("popular");
-                  closeMenu(); // Close the menu after navigation
                 }}
                 className="nav-link"
               >
@@ -69,7 +69,7 @@ const Header = ({ isOtherPage }) => {
                 smooth={true}
                 offset={scrollOffset}
                 duration={500}
-                onClick={closeMenu} // Close the menu after navigation
+                onClick={closeMenu}
               >
                 01. Popular
               </ScrollLink>
@@ -81,7 +81,6 @@ const Header = ({ isOtherPage }) => {
                 to="/#playing"
                 onClick={() => {
                   handleNavClick("playing");
-                  closeMenu(); // Close the menu after navigation
                 }}
                 className="nav-link"
               >
@@ -94,7 +93,7 @@ const Header = ({ isOtherPage }) => {
                 smooth={true}
                 offset={scrollOffset}
                 duration={500}
-                onClick={closeMenu} // Close the menu after navigation
+                onClick={closeMenu}
               >
                 02. Now Playing
               </ScrollLink>
@@ -106,11 +105,10 @@ const Header = ({ isOtherPage }) => {
                 to="/#trending"
                 onClick={() => {
                   handleNavClick("trending");
-                  closeMenu(); // Close the menu after navigation
                 }}
                 className="nav-link"
               >
-                03. Treding
+                03. Trending
               </RouterLink>
             ) : (
               <ScrollLink
@@ -119,9 +117,9 @@ const Header = ({ isOtherPage }) => {
                 smooth={true}
                 offset={scrollOffset}
                 duration={500}
-                onClick={closeMenu} // Close the menu after navigation
+                onClick={closeMenu}
               >
-                03. Treding
+                03. Trending
               </ScrollLink>
             )}
           </li>
@@ -131,11 +129,10 @@ const Header = ({ isOtherPage }) => {
                 to="/#upcoming"
                 onClick={() => {
                   handleNavClick("upcoming");
-                  closeMenu(); // Close the menu after navigation
                 }}
                 className="nav-link"
               >
-                04. Upcomming
+                04. Upcoming
               </RouterLink>
             ) : (
               <ScrollLink
@@ -144,9 +141,9 @@ const Header = ({ isOtherPage }) => {
                 smooth={true}
                 offset={scrollOffset}
                 duration={500}
-                onClick={closeMenu} // Close the menu after navigation
+                onClick={closeMenu}
               >
-                04. Upcomming
+                04. Upcoming
               </ScrollLink>
             )}
           </li>
@@ -156,7 +153,6 @@ const Header = ({ isOtherPage }) => {
                 to="/#rated"
                 onClick={() => {
                   handleNavClick("rated");
-                  closeMenu(); // Close the menu after navigation
                 }}
                 className="nav-link"
               >
@@ -169,27 +165,20 @@ const Header = ({ isOtherPage }) => {
                 smooth={true}
                 offset={scrollOffset}
                 duration={500}
-                onClick={closeMenu} // Close the menu after navigation
+                onClick={closeMenu}
               >
                 05. Top Rated
               </ScrollLink>
             )}
           </li>
-          {/* <li>
-            <RouterLink to="/volunteer" className="nav-link">
-              05. Top Rate
-            </RouterLink>
-          </li> */}
         </ul>
 
         <div className="toggler" onClick={handleClick}>
           {click ? (
-            <CloseOutlined
-              style={{ fontSize: "20px", color: "var(--night-rider)" }}
-            />
+            <CloseOutlined style={{ fontSize: "20px", color: "var(--white)" }} />
           ) : (
             <AlignRightOutlined
-              style={{ fontSize: "20px", color: "var(--night-rider)" }}
+              style={{ fontSize: "20px", color: "var(--white)" }}
             />
           )}
         </div>

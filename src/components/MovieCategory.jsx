@@ -19,7 +19,7 @@ const MovieCategory = ({ title, fetchMovies }) => {
 
   return (
     <div className="max-w-movies mx-auto">
-      <h1 className="flex justify-start text-4xl font-bold mt-10 mb-2">
+      <h1 className="flex movie-title  justify-start xl:text-3xl md:text-2xl text-xl  font-bold mt-10 mb-2">
         {title}
       </h1>
       {/* Container for scrolling */}
